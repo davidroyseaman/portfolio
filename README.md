@@ -2,7 +2,7 @@
 
 ## TODO list
 - [x] create repository
-- [ ] initialise with webpack/babel/react
+- [x] initialise with webpack/babel/react
 - [ ] index page with css-grid
 - [ ] swarming sim (try find version with trees)
 - [ ] voronoi 3d thing

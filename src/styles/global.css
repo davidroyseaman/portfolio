@@ -1,0 +1,11 @@
+:global(html) {
+  background-color: #000;
+}
+
+:global(body) {
+  margin: 0px;
+}
+
+:global(*::selection) {
+  background-color: hsla(0, 0%, 100%, 0.3);
+}
