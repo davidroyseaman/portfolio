@@ -1,9 +1,28 @@
 :global(html) {
   background-color: #000;
+  display: grid;
+  justify-content: stretch;
+  align-content: stretch;
+  min-height: 100vh;
 }
 
 :global(body) {
   margin: 0px;
+  display: grid;
+  justify-content: stretch;
+  align-content: stretch;
+}
+
+:global(#root) {
+  display: grid;
+  justify-content: stretch;
+  align-content: stretch;
+}
+
+:global(.grid) {
+  display: grid;
+  justify-content: stretch;
+  align-content: stretch;
 }
 
 :global(*::selection) {

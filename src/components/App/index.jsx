@@ -11,7 +11,7 @@ const bgStyles = {
 
 const appStyles = {
   border: 'solid 1px black',
-  borderRadius: '8px',
+  borderRadius: '4px',
   padding: '16px',
   backgroundColor: primary['-3'],
   boxShadow: `
@@ -24,7 +24,7 @@ const appStyles = {
 };
 
 const App = () => {
-  return <div style={bgStyles}>
+  return <div style={bgStyles} className="grid">
     <div style={appStyles}>
       <Box>a collection of doodles</Box>
     </div>
