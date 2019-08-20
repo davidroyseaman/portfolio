@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Exo+2|Nunito&display=swap');
+
 :global(html) {
   background-color: #000;
   display: grid;
   justify-content: stretch;
   align-content: stretch;
   min-height: 100vh;
+  font-family: 'Nunito', sans-serif;
+  /* font-family: 'Exo 2', sans-serif; */
 }
 
 :global(body) {

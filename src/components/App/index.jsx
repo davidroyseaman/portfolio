@@ -6,45 +6,47 @@ import { Rows } from '~/components/grids/rows.jsx';
 import { primary } from '~/styles/shades.js';
 
 const bgStyles = {
-  backgroundColor: 'black',
-  padding: '20px',
+  backgroundColor: primary['-4'],
+  padding: '64px',
 };
 
+// dsx rgba is cheating need -4.5, -5, etc.
 const appStyles = {
-  border: 'solid 1px black',
+  border: `solid 1px ${primary['-4']}`,
   borderRadius: '4px',
   padding: '16px',
-  backgroundColor: primary['-3'],
+  backgroundColor: primary['-3.5'],
   boxShadow: `
-    0px 2px 5px 0px ${primary['-3.5']},
-    inset 0px 0px 2px 2px ${primary['-2.5']}
+    0px 2px 8px 4px rgba(0,0,0,0.2),
+    inset 0px 0px 4px 4px ${primary['-3']}
   `,
   color: 'hsla(0, 0%, 100%, 0.5)',
-  fontFamily: 'monospace',
   fontSize: '32px',
 };
 
 const titleStyles = {};
 const doodlesStyles = {
   display: 'grid',
-  gridTemplateRows: 'repeat(auto-fit, 250px)',
   gridTemplateColumns: 'repeat(auto-fit, 250px)',
+  gridAutoRows: '250px',
   alignContent: 'center',
   justifyContent: 'center',
   gridGap: '16px',
+  fontFamily: '\'Exo 2\', sans-serif',
+  fontSize: '16px',
 };
 
 const App = () => {
   return <div style={bgStyles} className="grid">
     <div style={appStyles} className="grid">
       <Rows template="max-content 1fr" gap="16px">
-        <div style={titleStyles}>a collection of doodles</div>
+        <div style={titleStyles}>Experiments, exercises, investigations and toys.</div>
         <div style={doodlesStyles}>
-          <Box>x</Box>
-          <Box>x</Box>
-          <Box>x</Box>
-          <Box>x</Box>
-          <Box>x</Box>
+          <Box>The spectacle before us was indeed sublime. </Box>
+          <Box></Box>
+          <Box></Box>
+          <Box></Box>
+          <Box></Box>
         </div>
       </Rows>
     </div>
