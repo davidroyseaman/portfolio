@@ -8,8 +8,8 @@ const presets = [
         chrome: "67",  //67, using 7 for testing
         safari: "11.1",
       },
-      useBuiltIns: "usage", // Apply polyfills based on usage.
-      corejs: 3,
+      // useBuiltIns: "usage", // Apply polyfills based on usage.
+      // corejs: 3,
     },
   ],
   [

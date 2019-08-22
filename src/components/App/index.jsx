@@ -5,6 +5,8 @@ import Box from '~/components/visual/box.jsx';
 import { Rows } from '~/components/grids/rows.jsx';
 import { primary } from '~/styles/shades.js';
 
+import { Swarm } from '~/components/demos/swarm/index.jsx';
+
 const bgStyles = {
   backgroundColor: primary['-4'],
   padding: '64px',
@@ -43,7 +45,7 @@ const App = () => {
         <div style={titleStyles}>Experiments, exercises, investigations and toys.</div>
         <div style={doodlesStyles}>
           <Box>The spectacle before us was indeed sublime. </Box>
-          <Box></Box>
+          <Box><Swarm /></Box>
           <Box></Box>
           <Box></Box>
           <Box></Box>
