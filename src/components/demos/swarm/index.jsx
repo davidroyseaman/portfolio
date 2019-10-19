@@ -349,9 +349,9 @@ const dothething = (canvasEl, outputEl) => {
     var setLayer = function(layer) {
       //ctx.setTransform(0.6, 0.0, 0.4, 0.4, 20+10*layer, 20+60*layer);
       var z = -layer * 0.6644 + 0; //*48;
-      var v6 = 2.44948974278318;
-      var v2 = 1.4142135623731;
-      var v3 = 1.73205080756888;
+      // var v6 = 2.44948974278318;
+      // var v2 = 1.4142135623731;
+      // var v3 = 1.73205080756888;
 
       //workign, but sizeways
       //ctx.setTransform(v3/v6, 1/v6, 0, v3/v6, -v3/v6*z, 1/v6*z);
@@ -434,11 +434,11 @@ const dothething = (canvasEl, outputEl) => {
 
     var makeBox = function(x, y, z, d, w, h) {
       //Sides: 0yz(front), xDz, xyH
-      ctx.fillStyle = "rgba(128,0,0,0.8)";
-      ctx.strokeStyle = "#ffff00";
+      ctx.fillStyle = 'rgba(128,0,0,0.8)';
+      ctx.strokeStyle = '#ffff00';
       ctx.lineWidth = 3;
-      ctx.lineCap = "round";
-      ctx.lineJoin = "round";
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
 
       boxFaceFront(x, y, z, d, w, h);
       boxFaceSide(x, y, z, d, w, h);
@@ -451,17 +451,17 @@ const dothething = (canvasEl, outputEl) => {
       ctx.moveTo(xs + 0.5, ys + 0.5);
       ctx.lineTo(xe + 0.5, ye + 0.5);
       //ctx.closePath();
-      ctx.strokeStyle = col || "#ffff00";
+      ctx.strokeStyle = col || '#ffff00';
       ctx.lineWidth = 1;
       //ctx.lineJoin = "round";
       //ctx.linecap = "square"
       ctx.stroke();
     };
-    
+
     var drawLine3d = function(pts,pte, col) {
       var ptmaps = _3d.map(pts);
       var ptmape = _3d.map(pte);
-          var cull = false;
+      var cull = false;
       if (ptmaps.z < 0) {
         cull = true;
       }
@@ -475,26 +475,26 @@ const dothething = (canvasEl, outputEl) => {
       ctx.moveTo(ptmaps.x + 0.5, ptmaps.y + 0.5);
       ctx.lineTo(ptmape.x + 0.5, ptmape.y + 0.5);
       //ctx.closePath();
-      ctx.strokeStyle = col || "rgba(255,255,255,0.5)";
+      ctx.strokeStyle = col || 'rgba(255,255,255,0.5)';
       ctx.lineWidth = 1;
       //ctx.lineJoin = "round";
       //ctx.linecap = "square"
       ctx.stroke();
-    };    
+    };
 
     var drawRectangle = function(xs, ys, w, h) {
-      ctx.fillStyle = "rgba(255,128,16,1)";
+      ctx.fillStyle = 'rgba(255,128,16,1)';
       ctx.fillRect(xs, ys, w, h);
     };
 
     var drawTri = function(tri) {
-      Profiler.start("Map");
+      Profiler.start('Map');
       var pt1 = _3d.map(tri.a);
       var pt2 = _3d.map(tri.b);
       var pt3 = _3d.map(tri.c);
-      Profiler.end("Map");
-      Profiler.start("Canvas");
-      var col = "#00ff00";
+      Profiler.end('Map');
+      Profiler.start('Canvas');
+      // var col = '#00ff00';
       var cull = false;
       if (pt1.z < 0) {
         cull = true;
@@ -506,10 +506,10 @@ const dothething = (canvasEl, outputEl) => {
         cull = true;
       }
       if (cull) {
-        col = "#440000";
+        // col = '#440000';
         return;
       }
-  /*drawLine(pt1.x, pt1.y, pt2.x, pt2.y,col);
+      /*drawLine(pt1.x, pt1.y, pt2.x, pt2.y,col);
       drawLine(pt2.x, pt2.y, pt3.x, pt3.y,col);
       drawLine(pt3.x, pt3.y, pt1.x, pt1.y,col);*/
       ctx.beginPath();
@@ -520,8 +520,8 @@ const dothething = (canvasEl, outputEl) => {
       //ctx.strokeStyle = col || "#ffff00";
       //ctx.lineWidth = 1;
       //ctx.fillStyle = "rgba(0,255,0,0.1)";
-  //attribute DOMString lineCap; // "butt", "round", "square" (default "butt")
-  //attribute DOMString lineJoin; // "round", "bevel", "miter" (default "miter")        
+      //attribute DOMString lineCap; // "butt", "round", "square" (default "butt")
+      //attribute DOMString lineJoin; // "round", "bevel", "miter" (default "miter")
       //ctx.lineJoin = "bevel";
       //ctx.linecap = "square";
       if (tri.style){
@@ -531,10 +531,10 @@ const dothething = (canvasEl, outputEl) => {
       ctx.fill();
       ctx.stroke();
 
-      Profiler.end("Canvas");
+      Profiler.end('Canvas');
 
     };
-    
+
     var drawDot = function(pt, colour, s){
       var ptmap = _3d.map(pt);
       ctx.fillStyle = colour;
@@ -589,12 +589,12 @@ const dothething = (canvasEl, outputEl) => {
 
     var pyramid = function(x, y, w, h,p, col) {
       if(!col){ col =[Math.floor(Math.random()*256),
-            Math.floor(Math.random()*256),
-            Math.floor(Math.random()*256)];
+        Math.floor(Math.random()*256),
+        Math.floor(Math.random()*256)];
       }
-      var stroke = "rgba("+0*col[0]+","+0*col[1]+","+0*col[2]+",1.0)";
-      var fill = "rgba("+col[0]+","+col[1]+","+col[2]+",0.8)";          
-      var style = {stroke:stroke, fill:fill};        
+      var stroke = 'rgba('+0*col[0]+','+0*col[1]+','+0*col[2]+',1.0)';
+      var fill = 'rgba('+col[0]+','+col[1]+','+col[2]+',0.8)';
+      var style = {stroke:stroke, fill:fill};
       var pt1 = new _3d.Point(x, y, 0);
       var pt2 = new _3d.Point(x + w, y, 0);
       var pt3 = new _3d.Point(x + w, y + h, 0);
@@ -614,12 +614,12 @@ const dothething = (canvasEl, outputEl) => {
 
     var diamond = function(x, y, z, size, col) {
       if(!col){ col =[Math.floor(Math.random()*256),
-            Math.floor(Math.random()*256),
-            Math.floor(Math.random()*256)];
+        Math.floor(Math.random()*256),
+        Math.floor(Math.random()*256)];
       }
-      var stroke = "rgba("+col.r+","+col.g+","+col.b+",0.5)";          
-      var fill = "rgba("+col.r+","+col.g+","+col.b+",0.5)";          
-      
+      var stroke = 'rgba('+col.r+','+col.g+','+col.b+',0.5)';
+      var fill = 'rgba('+col.r+','+col.g+','+col.b+',0.5)';
+
       var style = {stroke:stroke, fill:fill};
       var pt1 = new _3d.Point(x, y, z + size/2);
       var pt2 = new _3d.Point(x + size/2, y + size/2, z);
@@ -644,10 +644,10 @@ const dothething = (canvasEl, outputEl) => {
 
     var cube = function(x, y, w, h) {
       var col =[Math.floor(Math.random()*256),
-            Math.floor(Math.random()*256),
-            Math.floor(Math.random()*256)];
-      var stroke = "rgba("+0*col[0]+","+0*col[1]+","+0*col[2]+",1.0)";
-      var fill = "rgba("+col[0]+","+col[1]+","+col[2]+",0.8)";        
+        Math.floor(Math.random()*256),
+        Math.floor(Math.random()*256)];
+      var stroke = 'rgba('+0*col[0]+','+0*col[1]+','+0*col[2]+',1.0)';
+      var fill = 'rgba('+col[0]+','+col[1]+','+col[2]+',0.8)';
       var style = {stroke:stroke, fill:fill};
       var d = h;
       var pt1 = new _3d.Point(x, y, 0);
@@ -704,14 +704,14 @@ const dothething = (canvasEl, outputEl) => {
       var step = Math.PI*2/points;
       var point1 = null;
       for (var i =0; i<Math.PI*2; i+=step){
-        
+
       }
     };*/
-    
-    var tree = function(){
-      var Stump = {s:new _3d.Point(0,0,0), e:new _3d.Point(0,0,100)};
-      
-    };
+
+    // var tree = function(){
+    //   var Stump = {s:new _3d.Point(0,0,0), e:new _3d.Point(0,0,100)};
+
+    // };
 
     var thinTree = function(x, y, levels, size, basecol, numsplits){
       var all = [];
@@ -724,12 +724,12 @@ const dothething = (canvasEl, outputEl) => {
         var r = (targetcol.r)*s + basecol.r*(1-s);
         var g = (targetcol.g)*s + basecol.g*(1-s);
         var b = (targetcol.b)*s + basecol.b*(1-s);
-        return "rgba("+(r|0)+","+(g|0)+","+(b|0)+","+a.toFixed(2)+")";
+        return 'rgba('+(r|0)+','+(g|0)+','+(b|0)+','+a.toFixed(2)+')';
       };
       current.push({start:{x:x, y:y, z:0}, end:{x:x, y:y, z:size}, colour:c(0.0)});
 
       for (var depth = 0; depth < levels; depth++){
-        a = 0.8 - 0.8*((depth+1)/levels);           
+        a = 0.8 - 0.8*((depth+1)/levels);
         for (var branch = 0; branch < current.length; branch++){
           for (var splits = 0; splits < numsplits[depth]; splits ++){
             var thissize = size*0.2 + (size-size*0.2) * (levels-depth-1)/levels;
@@ -754,24 +754,24 @@ const dothething = (canvasEl, outputEl) => {
             shadows.push({
               start:{x:current[branch].end.x, y:current[branch].end.y, z:1},
               end:{x:dx, y:dy, z:1},
-              colour:"rgba(0,0,0,0.2)"
+              colour:'rgba(0,0,0,0.2)'
             });
           }
         }
         all = all.concat(current);
         current = grown;
         grown = [];
-        
+
       }
 
       shadowlines=shadowlines.concat(shadows);
       lines=lines.concat(all);
 
-    }
+    };
 
     var draw = function() {
-      Profiler.start("Sort");
-      
+      Profiler.start('Sort');
+
       // tris.sort(function(t1, t2){
       //     var t1c = {x:(t1.a.x+t1.b.x+t1.c.x)/3,
       //                y:(t1.a.y+t1.b.y+t1.c.y)/3,
@@ -779,142 +779,142 @@ const dothething = (canvasEl, outputEl) => {
       //     var t2c = {x:(t2.a.x+t2.b.x+t2.c.x)/3,
       //                y:(t2.a.y+t2.b.y+t2.c.y)/3,
       //                z:(t2.a.z+t2.b.z+t2.c.z)/3};
-        
+
       //     var t1z = _3d.map(t1c).z;
-      //     var t2z = _3d.map(t2c).z;            
-        
+      //     var t2z = _3d.map(t2c).z;
+
       //     return t2z-t1z;
       // });
-      
-      Profiler.end("Sort");
+
+      Profiler.end('Sort');
       //Profiler.start("Draw");
-      for (var i = 0; i < tris.length; i++) {
+      for (let i = 0; i < tris.length; i++) {
         Canvas.drawTri(tris[i]);
       }
 
-      for (var i = 0; i < shadowlines.length; i++) {
+      for (let i = 0; i < shadowlines.length; i++) {
         Canvas.drawLine3d(shadowlines[i].start, shadowlines[i].end, shadowlines[i].colour);
       }
 
 
-      for (var i = 0; i < lines.length; i++) {
+      for (let i = 0; i < lines.length; i++) {
         Canvas.drawLine3d(lines[i].start, lines[i].end, lines[i].colour);
       }
 
-      //Profiler.end("Draw");        
+      //Profiler.end("Draw");
     };
-    
+
     var grid = function(dx, dy, l){
       var col =[Math.floor(Math.random()*256),
-            Math.floor(Math.random()*256),
-            Math.floor(Math.random()*256)];
-      var stroke = "rgba("+0*col[0]+","+0*col[1]+","+0*col[2]+",1.0)";
-      var fill = "rgba("+col[0]+","+col[1]+","+col[2]+",0.8)";        
-      var style = {stroke:stroke, fill:fill};  
+        Math.floor(Math.random()*256),
+        Math.floor(Math.random()*256)];
+      var stroke = 'rgba('+0*col[0]+','+0*col[1]+','+0*col[2]+',1.0)';
+      var fill = 'rgba('+col[0]+','+col[1]+','+col[2]+',0.8)';
+      var style = {stroke:stroke, fill:fill};
       var b;
       for (var x = -l; x < l; x += dx) {
         for (var y = -l; y < l; y += dy) {
           b = Math.floor(Math.random()*2)*255;
           col = [b,b,b];
-          stroke = "rgba("+col[0]+","+col[1]+","+col[2]+",1.0)";
-          fill = "rgba("+col[0]+","+col[1]+","+col[2]+",1.0)";        
-          style = {stroke:stroke, fill:fill};                  
+          stroke = 'rgba('+col[0]+','+col[1]+','+col[2]+',1.0)';
+          fill = 'rgba('+col[0]+','+col[1]+','+col[2]+',1.0)';
+          style = {stroke:stroke, fill:fill};
           var pt1 = new _3d.Point(x, y, 0);
           var pt2 = new _3d.Point(x + dx, y, 0);
           var pt3 = new _3d.Point(x + dx, y + dy, 0);
           var pt4 = new _3d.Point(x, y + dy, 0);
           tris.push(new _3d.Tri(pt1, pt2, pt3, style ));
           tris.push(new _3d.Tri(pt1, pt3, pt4, style ));
-        }        
+        }
       }
     };
-    
+
     var terrain = function(nx,ny,s, h){
       var x;
       var y;
-      
+
       var vec1;
       var vec2;
       var normal = [];
       var nleng = 0;
-     
+
       //Set up random heights:
       var hField = [];
       for (x = 0; x < nx+1; x += 1) {
         hField[x] = [];
         for (y = 0; y < ny+1; y += 1) {
           hField[x][y] = Math.floor(Math.random()*h-h/2);
-        }        
+        }
       }
-      
+
       //Make the map
-      var stroke = "rgba(0,30,0,1.0)";
-      var fill = "rgba(0,32,0,1.0)";        
-      var style = {stroke:stroke, fill:fill};                  
-      var r,g,b;
+      var stroke = 'rgba(0,30,0,1.0)';
+      var fill = 'rgba(0,32,0,1.0)';
+      var style = {stroke:stroke, fill:fill};
+      // var r,g,b;
       for (x = 0; x < nx; x += 1) {
         for (y = 0; y < ny; y += 1) {
           var pt1 = new _3d.Point(x*s-nx*s/2, y*s-ny*s/2, hField[x][y]);
           var pt2 = new _3d.Point(x*s+s-nx*s/2 , y*s-ny*s/2, hField[x+1][y]);
           var pt3 = new _3d.Point(x*s+s-nx*s/2, y*s+s-ny*s/2, hField[x+1][y+1]);
           var pt4 = new _3d.Point(x*s-nx*s/2, y*s+s-ny*s/2, hField[x][y+1]);
-          
+
           vec1 = [pt1.x-pt2.x, pt1.y-pt2.y, pt1.z-pt2.z];
-          vec2 = [pt1.x-pt3.x, pt1.y-pt3.y, pt1.z-pt3.z];      
+          vec2 = [pt1.x-pt3.x, pt1.y-pt3.y, pt1.z-pt3.z];
           normal = [
             vec1[1] * vec2[2] - vec1[2] * vec2[1],
             vec1[2] * vec2[0] - vec1[0] * vec2[2],
-            vec1[0] * vec2[1] - vec1[1] * vec2[0]                        
-            ];
-          
+            vec1[0] * vec2[1] - vec1[1] * vec2[0]
+          ];
+
           nleng = Math.sqrt(normal[0]*normal[0]+
             normal[1]*normal[1]+
             normal[2]*normal[2]);
           normal = [normal[0]/nleng, normal[1]/nleng, normal[2]/nleng];
-          r=Math.floor((normal[2])*0);
-          g=Math.floor((normal[2])*64);
-          b=Math.floor((normal[2])*0);
+          // r=Math.floor((normal[2])*0);
+          // g=Math.floor((normal[2])*64);
+          // b=Math.floor((normal[2])*0);
           //O.O(normal[2]);
 
-          //fill = "rgba("+r+","+g+","+b+",0.7)";   
-          style = {stroke:stroke, fill:fill};    
+          //fill = "rgba("+r+","+g+","+b+",0.7)";
+          style = {stroke:stroke, fill:fill};
           tris.push(new _3d.Tri(pt1, pt2, pt3, style ));
-          
-          
+
+
           vec1 = [pt1.x-pt3.x, pt1.y-pt3.y, pt1.z-pt3.z];
-          vec2 = [pt1.x-pt4.x, pt1.y-pt4.y, pt1.z-pt4.z];      
+          vec2 = [pt1.x-pt4.x, pt1.y-pt4.y, pt1.z-pt4.z];
           normal = [
             vec1[1] * vec2[2] - vec1[2] * vec2[1],
             vec1[2] * vec2[0] - vec1[0] * vec2[2],
-            vec1[0] * vec2[1] - vec1[1] * vec2[0]                        
-            ];
+            vec1[0] * vec2[1] - vec1[1] * vec2[0]
+          ];
 
           nleng = Math.sqrt(normal[0]*normal[0]+
             normal[1]*normal[1]+
             normal[2]*normal[2]);
           normal = [normal[0]/nleng, normal[1]/nleng, normal[2]/nleng];
-          var c=Math.floor((normal[2])*255);
+          // var c=Math.floor((normal[2])*255);
 
-          //fill = "rgba("+r+","+g+","+b+",0.7)";   
-          style = {stroke:stroke, fill:fill};    
+          //fill = "rgba("+r+","+g+","+b+",0.7)";
+          style = {stroke:stroke, fill:fill};
           tris.push(new _3d.Tri(pt1, pt3, pt4, style ));
-        }        
-      }        
-      
+        }
+      }
+
     };
-    
+
     var dots = (function(){
       var list = [];
       var lasers = [];
       var explosions = [];
-      
+
       var dotSize=2.0;
-      
-      
+
+
       var getCount = function(){
         return list.length;
       };
-      
+
       var create = function(n){
         for(var i = 0; i < n; i++){
           var x = Math.random()*2000-1000;
@@ -924,7 +924,7 @@ const dothething = (canvasEl, outputEl) => {
           var vec = new _3d.Point(
             Math.random()-0.5,
             Math.random()-0.5,
-            Math.random()-0.5                    
+            Math.random()-0.5
           );
           var a = new _3d.Point(0,0,0);
           var trail = [
@@ -933,13 +933,13 @@ const dothething = (canvasEl, outputEl) => {
           list.push({p:pt, v:vec, a:a, t:trail, strain:1});
         }
       };
-      
+
       var createAt = function(x,y,z,t){
         var pt = new _3d.Point(x,y,z);
         var vec = new _3d.Point(
           10*Math.random()-0.5,
           10*Math.random()-0.5,
-          10*Math.random()-0.5                    
+          10*Math.random()-0.5
         );
         var a = new _3d.Point(0,0,0);
         var trail = [
@@ -950,69 +950,69 @@ const dothething = (canvasEl, outputEl) => {
           maxLife:500,life:500, laserCD:10, laserHeat:0
         });
       };
-      
+
       var draw = function(){
         var i;
         var col;
         var colStr;
         var alpha;
         var dmg;
-        
+
         //explosions
         for(i = 0; i< explosions.length; i++){
           col = Math.floor(255*explosions[i].t/explosions[i].tmax);
-          colStr = "rgba("+
-            255+","+
-            (col)+","+
-            0+","+0.25+")";  
-          
+          colStr = 'rgba('+
+            255+','+
+            (col)+','+
+            0+','+0.25+')';
+
           if (explosions[i].smoke){
-            colStr = "rgba("+
-              (255-col)+","+
-              (255-col)+","+
-              (255-col)+","+0.05+")";
+            colStr = 'rgba('+
+              (255-col)+','+
+              (255-col)+','+
+              (255-col)+','+0.05+')';
           }
-          
+
           var m = explosions[i].size;
           var k = 4*m/(explosions[i].tmax*explosions[i].tmax);
           var s = m-k*Math.pow((explosions[i].t-explosions[i].tmax/2),2);
-          
+
           Canvas.drawDot(
-            {x:explosions[i].x,y:explosions[i].y, z:explosions[i].z}, 
+            {x:explosions[i].x,y:explosions[i].y, z:explosions[i].z},
             colStr,
             s
           );
           //O.C();
-          //O.O(explosions.length + colStr+ "|"+JSON.stringify(xxx));  *              
-        }    
+          //O.O(explosions.length + colStr+ "|"+JSON.stringify(xxx));  *
+        }
         //shadow
         for(i = 0; i< list.length; i++){
           col = dotTypes[list[i].type].colour;
-          colStr = "rgba("+
-            Math.floor(col.r)+","+
-            Math.floor(col.g)+","+
-            Math.floor(col.b)+","+0.05+")";                
+          colStr = 'rgba('+
+            Math.floor(col.r)+','+
+            Math.floor(col.g)+','+
+            Math.floor(col.b)+','+0.05+')';
           Canvas.drawDot(
-            {x:list[i].p.x,y:list[i].p.y, z:0}, 
-            "rgba(0,0,0,0.3)",
+            {x:list[i].p.x,y:list[i].p.y, z:0},
+            'rgba(0,0,0,0.3)',
             dotSize
           );
           Canvas.drawLine3d(
-            {x:list[i].p.x,y:list[i].p.y, z:0}, 
+            {x:list[i].p.x,y:list[i].p.y, z:0},
             {x:list[i].t[0].x,y:list[i].t[0].y, z:0},
-            "rgba(0,0,0,0.3)"
+            'rgba(0,0,0,0.3)'
           );
           Canvas.drawLine3d(
-            list[i].p, 
-            {x:list[i].p.x,y:list[i].p.y, z:0}, 
+            list[i].p,
+            {x:list[i].p.x,y:list[i].p.y, z:0},
             colStr
           );
-          
-        }     
-        
+
+        }
+
         for(i = 0; i< list.length; i++){
           if (list[i].strain<0.5){list[i].strain = 0.5;}
-          if (list[i].strain>2){list[i].strain = 2;}                
+          if (list[i].strain>2){list[i].strain = 2;}
           var x = ((list[i].strain-0.5)/1.5*255);
           x = Math.floor(x);
           x=x%256;
@@ -1020,28 +1020,28 @@ const dothething = (canvasEl, outputEl) => {
           col = dotTypes[list[i].type].colour;
           alpha = 0.5;//0.3+0.7*Math.floor(10-(list[i].life/100)*10)/10;
           dmg = 1-list[i].life/list[i].maxLife;
-          colStr = "rgba("+
-            Math.floor(dmg*255+(1-dmg)*col.r)+","+
-            Math.floor(dmg*0+(1-dmg)*col.g)+","+
-            Math.floor(dmg*0+(1-dmg)*col.b)+","+alpha+")";
+          colStr = 'rgba('+
+            Math.floor(dmg*255+(1-dmg)*col.r)+','+
+            Math.floor(dmg*0+(1-dmg)*col.g)+','+
+            Math.floor(dmg*0+(1-dmg)*col.b)+','+alpha+')';
           Canvas.drawDot(list[i].p, colStr, dotSize);
           dmg=0;
-          colStr = "rgba("+
-            Math.floor(dmg*255+(1-dmg)*col.r)+","+
-            Math.floor(dmg*0+(1-dmg)*col.g)+","+
-            Math.floor(dmg*0+(1-dmg)*col.b)+","+alpha+")";
+          colStr = 'rgba('+
+            Math.floor(dmg*255+(1-dmg)*col.r)+','+
+            Math.floor(dmg*0+(1-dmg)*col.g)+','+
+            Math.floor(dmg*0+(1-dmg)*col.b)+','+alpha+')';
           Canvas.drawLine3d(list[i].p, list[i].t[0], colStr);
         }
-        
+
         //lasers
         for(i = 0; i< lasers.length; i++){
           col = dotTypes[lasers[i].from.type].colour;
           alpha = lasers[i].pew*0.1;
-          colStr = "rgba("+col.r+","+col.g+","+col.b+","+alpha+")";
+          colStr = 'rgba('+col.r+','+col.g+','+col.b+','+alpha+')';
           Canvas.drawLine3d(lasers[i].from.p,lasers[i].to.p, colStr);
         }
       };
-      
+
       var calculate = function(){
         // var rules = {
         //     laserRange:150,
@@ -1086,14 +1086,14 @@ const dothething = (canvasEl, outputEl) => {
           // friction:0.995,
           // cap:200
         };
-        
-        var power = 0;
+
+        // var power = 0;
         var dist;
         var vec;
         var ctr;
         var closest;
         var closeDist;
-        
+
         for(var i = 0; i< list.length; i++){
           ctr=0;
           closest = null;
@@ -1104,20 +1104,20 @@ const dothething = (canvasEl, outputEl) => {
               list[i].p.y - list[j].p.y > 200 ||
               list[i].p.y - list[j].p.y < -200 ||
               list[i].p.z - list[j].p.z > 200 ||
-              list[i].p.z - list[j].p.z < -200 
-              ){continue;}
+              list[i].p.z - list[j].p.z < -200
+            ){continue;}
             dist = Math.sqrt(
               Math.pow(list[i].p.x-list[j].p.x,2)+
               Math.pow(list[i].p.y-list[j].p.y,2)+
               Math.pow(list[i].p.z-list[j].p.z,2)
             );
-            
+
             vec = {
               x:list[i].p.x-list[j].p.x,
               y:list[i].p.y-list[j].p.y,
               z:list[i].p.z-list[j].p.z
             };
-            
+
             if(
               dist < rules.laserRange &&
               list[i].laserHeat ===0 &&
@@ -1127,7 +1127,7 @@ const dothething = (canvasEl, outputEl) => {
               closest = list[j];
               closeDist = dist;
             }
-            
+
             if (dist<rules.attract && ctr<2){
               ctr++;
               list[i].v.x -= 1*vec.x/(dist+5);
@@ -1139,7 +1139,7 @@ const dothething = (canvasEl, outputEl) => {
               list[i].a.y += 100*vec.y;
               list[i].a.z += 100*vec.z;
             }
-            
+
             if (dist<rules.repulse){
               list[i].v.x += 4*vec.x/(dist+50);
               list[i].v.y += 4*vec.y/(dist+50);
@@ -1151,10 +1151,10 @@ const dothething = (canvasEl, outputEl) => {
               list[i].v.y += 100*vec.y/(dist+50);
               list[i].v.z += 100*vec.z/(dist+50);
             }
-            
-            
+
+
           }
-          
+
           //fire laser!
           if(closest !== null){
             list[i].laserHeat = list[i].laserCD;
@@ -1164,25 +1164,25 @@ const dothething = (canvasEl, outputEl) => {
               pew:5
             });
           }
-          
+
           //pull towards middle:
-          
+
           dist = Math.sqrt(
             Math.pow(list[i].p.x-0,2)+
             Math.pow(list[i].p.y-0,2)+
             Math.pow(list[i].p.z-100,2)
           );
-          
+
           vec = {
             x:list[i].p.x-0,
             y:list[i].p.y-0,
             z:list[i].p.z-100
           };
-          
+
           list[i].a.x -= 0.000001*vec.x;
           list[i].a.y -= 0.000001*vec.y;
-          list[i].a.z -= 0.000001*vec.z;                
-                  
+          list[i].a.z -= 0.000001*vec.z;
+
           //normalise
 
           var norm = Math.sqrt(
@@ -1191,13 +1191,13 @@ const dothething = (canvasEl, outputEl) => {
             Math.pow(list[i].v.z,2)
           );
           list[i].strain = norm;
-          
+
           if(norm>2 || norm<0.5){
             list[i].v.x= 8 * list[i].v.x/norm;
             list[i].v.y= 8 * list[i].v.y/norm;
-            list[i].v.z= 8 * list[i].v.z/norm;        
+            list[i].v.z= 8 * list[i].v.z/norm;
           }
-          
+
           //bouncing
           var bncfrc = 1;
           if (list[i].p.z<0 && list[i].v.z < 0){
@@ -1217,8 +1217,8 @@ const dothething = (canvasEl, outputEl) => {
           }
           if (list[i].p.x>1000 ){
             list[i].v.x -= bncfrc;
-          }              
-          
+          }
+
 
           /*if(
             list[i].p.x < -1000 ||
@@ -1232,11 +1232,11 @@ const dothething = (canvasEl, outputEl) => {
             list[i].p = {x:0, y:0, z:200};
             list[i].t = [
               list[i].p,list[i].p,list[i].p,list[i].p,list[i].p
-            ];                    
+            ];
           }*/
-        }            
+        }
       };
-      
+
       var p = 0;
       var update = function(){
         p=p+1;
@@ -1245,7 +1245,7 @@ const dothething = (canvasEl, outputEl) => {
           lasers[i].pew--;
           if(lasers[i].pew <=0){
             lasers[i].to.life-=25;
-            
+
             explosions.push({
               x:lasers[i].to.p.x+25*(Math.random()-0.5),
               y:lasers[i].to.p.y+25*(Math.random()-0.5),
@@ -1254,14 +1254,14 @@ const dothething = (canvasEl, outputEl) => {
               tmax:5,
               size:2,
               smoke:false
-            });                    
-            
+            });
+
             lasers.splice(i,1);
             i--;
             continue;
           }
         }
-        
+
         for(i = 0; i< explosions.length; i++){
           explosions[i].t++;
           if(explosions[i].t>=explosions[i].tmax){
@@ -1278,12 +1278,12 @@ const dothething = (canvasEl, outputEl) => {
               explosions[i].size*=3;
             }
           }
-        }            
-        
+        }
+
 
         for(i = 0; i< list.length; i++){
           // Smoke trails for damaged ones
-          
+
           if (list[i].life / list[i].maxLife < Math.random()*0.5 && Math.random() < 0.3){
             explosions.push({
               x:list[i].p.x+25*(Math.random()-0.5),
@@ -1305,29 +1305,29 @@ const dothething = (canvasEl, outputEl) => {
               size:5,
               smoke:false
             });
-              
+
             list.splice(i,1);
             i--;
 
             continue;
           }
-          
+
           /*if(list[i].life<list[i].maxLife){
             list[i].life++;
           }*/
-          
+
           if(list[i].laserHeat > 0){
             list[i].laserHeat--;
           }
-          
+
           list[i].p.x = list[i].p.x + list[i].v.x*0.5;
           list[i].p.y = list[i].p.y + list[i].v.y*0.5;
           list[i].p.z = list[i].p.z + list[i].v.z*0.5;
-          
+
           list[i].v.x = list[i].v.x + list[i].a.x*0.5;
           list[i].v.y = list[i].v.y + list[i].a.y*0.5;
           list[i].v.z = list[i].v.z + list[i].a.z*0.5;
-          
+
           if(p%1===0){
             p=0;
             list[i].t.shift();
@@ -1337,9 +1337,9 @@ const dothething = (canvasEl, outputEl) => {
               list[i].p.z
             ));
           }
-        }            
+        }
       };
-      
+
       return {
         create:create,
         draw:draw,
@@ -1348,17 +1348,17 @@ const dothething = (canvasEl, outputEl) => {
         createAt:createAt,
         getCount:getCount
       };
-      
+
     }());
-    
+
     var dotTypes=[
       {colour:{r:255,g:96,b:96}},
       {colour:{r:96,g:96,b:255}},
-      {colour:{r:96,g:255,b:96}},        
+      {colour:{r:96,g:255,b:96}},
       {colour:{r:255,g:96,b:255}},
-      {colour:{r:255,g:255,b:255}}        
+      {colour:{r:255,g:255,b:255}}
     ];
-    
+
     var game = (function(){
       var spawners=[];
       var newSpawner = function(x,y,t,p,n,z){
@@ -1375,34 +1375,34 @@ const dothething = (canvasEl, outputEl) => {
         //pyramid(x-20,y-20,40,40,z);
         pyramid(x-0.5*n,y-0.5*n,1*n,1*n,z, [64,64,64]);
         diamond(x,y,z,2*n, dotTypes[t].colour);
-        
+
       };
-      
+
       var tick = function(){
         //O.C();
         //O.O(dots.getCount());
         if (dots.getCount() > 1000){return;} //200
         for(var i =0; i<spawners.length; i++){
           if(spawners[i].tick === 0 ){
-             spawners[i].tick = spawners[i].period;
-            for (var j = 0; j<spawners[i].num; j++){ 
-               dots.createAt(
-                 spawners[i].x,
-                 spawners[i].y,
-                 spawners[i].z,
-                 spawners[i].t
-               );
+            spawners[i].tick = spawners[i].period;
+            for (var j = 0; j<spawners[i].num; j++){
+              dots.createAt(
+                spawners[i].x,
+                spawners[i].y,
+                spawners[i].z,
+                spawners[i].t
+              );
             }
           }
           spawners[i].tick--;
         }
       };
-      
+
       return{
         newSpawner:newSpawner,
         tick:tick
       };
-      
+
     }());
 
     return {
@@ -1414,7 +1414,7 @@ const dothething = (canvasEl, outputEl) => {
       pyramid :pyramid,
       dots:dots,
       game:game,
-      thinTree: thinTree        
+      thinTree: thinTree
     };
 
   }());
@@ -1424,9 +1424,9 @@ const dothething = (canvasEl, outputEl) => {
     var loc = {x:120, y: 100, z:300};
     var face = {tx: Math.PI / 2, ty:0, tz:0};
     var step = 10;
-    
-    var mouseLast = null;
-    
+
+    // var mouseLast = null;
+
     var moveForward = function(){
       loc.y+=step;
     };
@@ -1444,34 +1444,34 @@ const dothething = (canvasEl, outputEl) => {
     };
     var moveUp = function(){
       loc.z+=step;
-    };    
-    
+    };
+
     var handler = function(e){
       switch(e.keyCode)
       {
-        case 37: Flier.l();break;
-        case 38: Flier.f();break;
-        case 39: Flier.r();break;
-        case 40: Flier.b();break;
-        case 32: Flier.u();break;
-        case 67: Flier.d();break;
+      case 37: Flier.l();break;
+      case 38: Flier.f();break;
+      case 39: Flier.r();break;
+      case 40: Flier.b();break;
+      case 32: Flier.u();break;
+      case 67: Flier.d();break;
 
-          
-        case 13: paused = !paused; break;
-          case 116:alert("NO!");return false;
-        default:
-          alert(e.keyCode);
-          break;
+
+      // case 13: paused = !paused; break;
+      case 116:alert('NO!');return false;
+      default:
+        alert(e.keyCode);
+        break;
       }
       Flier.remap();
     };
-    
+
     var update = function(){
       _3d.set([loc.x, loc.y, loc.z], [face.tx, face.ty, face.tz], [0, 0, 250]);
-      Canvas.clear();        
+      Canvas.clear();
       Tests.draw();
     };
-    
+
     return {
       u:moveUp,
       d:moveDown,
@@ -1557,7 +1557,7 @@ const dothething = (canvasEl, outputEl) => {
     var h = 1200;
 
     var rad = 1800;
-    var frames = 0, maxFrames = 10, start = Date.now(), curfps=0, now, fps;
+    // var frames = 0, maxFrames = 10, start = Date.now(), curfps=0, now, fps;
 
     var runLoop = function(){
       Canvas.clear();

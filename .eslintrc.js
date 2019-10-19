@@ -18,6 +18,7 @@ module.exports = {
     },
   },
   'rules': {
+    'no-trailing-spaces': ['error', {}],
     'react/prop-types': 0,
     'indent': [
       'error',
