@@ -39,13 +39,16 @@ const doodlesStyles = {
 };
 
 const App = () => {
+
+  const [p, setp] = React.useState(false);
+
   return <div style={bgStyles} className="grid">
     <div style={appStyles} className="grid">
       <Rows template="max-content 1fr" gap="16px">
         <div style={titleStyles}>Experiments, exercises, investigations and toys.</div>
         <div style={doodlesStyles}>
           <Box>The spectacle before us was indeed sublime. </Box>
-          <Box><Swarm /></Box>
+          <Box><Swarm paused/></Box>
           <Box></Box>
           <Box></Box>
           <Box></Box>

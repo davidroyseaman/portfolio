@@ -1499,10 +1499,11 @@ const dothething = (canvasEl, outputEl) => {
         };
   })();
 
+  let paused = false;
 
   var start = function(){
 
-    O.S('output');
+    // O.S('output');
 
     Canvas.init();
     _3d.set([1200, 1200, 100], [0, 0, 0], [0, 0, 20]);
@@ -1560,6 +1561,7 @@ const dothething = (canvasEl, outputEl) => {
     // var frames = 0, maxFrames = 10, start = Date.now(), curfps=0, now, fps;
 
     var runLoop = function(){
+      if (paused) { return shimRequestAnimFrame(runLoop); }
       Canvas.clear();
       _3d.set([rad*Math.cos(ang), rad*Math.sin(ang), h+100], [Math.PI / 2 + Math.PI/4 * ((h-700) / 600), 0, 3*Math.PI/2-ang], [0, 0, 800]);
       Tests.draw();  //leak
@@ -1608,24 +1610,28 @@ const dothething = (canvasEl, outputEl) => {
   //    Canvas.init();
   // });
 
-  return start;
+  return {
+    start,
+    setPaused: (value) => paused = value,
+  };
 };
 
-const Swarm = () => {
-  const outputRef = React.useRef(null);
+const Swarm = ({ paused }) => {
+  console.log(paused);
   const canvasRef = React.useRef(null);
+  const [ sim, setSim ] = React.useState(null);
 
   React.useEffect(() => {
-    if (outputRef.current && canvasRef.current) {
-      const start = dothething(canvasRef.current, outputRef.current);
-      start();
+    if (canvasRef.current) {
+      const sim = dothething(canvasRef.current);
+      setSim(sim);
+      sim.start();
     }
   }, []);
 
-  return <div>
-    <canvas ref={canvasRef} />
-    <div ref={outputRef}><div /></div>
-  </div>;
+  if (sim) { sim.setPaused(paused); }
+
+  return <canvas ref={canvasRef} style={{ width: '100%', height: '100%' }} />;
 };
 
 export { Swarm };
