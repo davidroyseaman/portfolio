@@ -48,7 +48,7 @@ const App = () => {
         <div style={titleStyles}>Experiments, exercises, investigations and toys.</div>
         <div style={doodlesStyles}>
           <Box>The spectacle before us was indeed sublime. </Box>
-          <Box><Swarm paused/></Box>
+          <Box title="Swarm"><Swarm paused/></Box>
           <Box></Box>
           <Box></Box>
           <Box></Box>
